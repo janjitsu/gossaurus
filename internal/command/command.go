@@ -50,7 +50,14 @@ func BuildWithArgs() Command {
 }
 
 func (c *Command) Execute() {
-	dictionary := parser.ParseDictionary(*c)
+	dictionary := parser.ParseDictionary(parser.CreateDictionaryParams{
+		c.From,
+		c.To,
+		c.EntriesFile,
+		c.Title,
+		c.Author,
+		c.Cover,
+	})
 	// if version directory doesn't exist, create it
 	os.MkdirAll(fmt.Sprintf("out/%s", dictionary.Id), os.ModePerm)
 

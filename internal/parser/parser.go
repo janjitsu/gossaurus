@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-interface CreateDictionaryParams {
+type CreateDictionaryParams struct {
 	From        string
 	To          string
 	EntriesFile string
@@ -36,16 +36,16 @@ func parseTSV(filename string) [][]string {
 
 func parseEntries(filename string) []entities.Entry {
 	records := parseTSV(filename)
-
+	//@TODO need a validator, tell me if some line is wrong and not crash the app
 	var entries []entities.Entry
 	for i, record := range records {
 		if i == 0 {
 			continue // Skip header
 		}
-
 		//@TODO this is ugly
 		var entry entities.Entry
 		entry.Title = record[0]
+		//@TODO if there are no inflexsions, still is setting an empty string
 		entry.Inflexions = strings.Split(record[1], ",")
 		entry.Grammar = record[2]
 		entry.Meaning1 = record[3]
@@ -65,7 +65,7 @@ func parseEntries(filename string) []entities.Entry {
 	return entries
 }
 
-func ParseDictionary(c DictionaryParams) entities.Dictionary {
+func ParseDictionary(c CreateDictionaryParams) entities.Dictionary {
 	entries := parseEntries(c.EntriesFile)
 	fmt.Println(entries)
 

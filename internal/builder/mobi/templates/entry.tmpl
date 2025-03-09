@@ -1,16 +1,7 @@
 {{define "entry" -}}
-    <idx:entry name="Croatian" scriptable="yes" spell="yes">
-        <idx:short>
-            <idx:orth value="{{.Title}}">
-                <b>{{.Title}}</b>
-                {{- if .Inflexions }}
-                    <idx:infl>
-                        {{- range .Inflexions}}
-                            <idx:iform value="{{.}}" exact="yes"/>
-                        {{- end}}
-                    </idx:infl>
-                {{- end}}
-            </idx:orth>
+    <idx:entry scriptable="yes">
+            <idx:orth value="{{.Title}}">{{- if .Inflexions }}<idx:infl>{{- range .Inflexions}}<idx:iform value="{{.}}" exact="yes"/>{{- end}}</idx:infl>{{- end}}</idx:orth>
+            <b>{{.Title}}</b>
             {{if .Grammar}}
                 <idx:gramgrp>
                     <i>{{.Grammar}}</i>&nbsp;
@@ -37,6 +28,6 @@
             {{ if .Note1}} * {{.Note1}} {{end}}
             {{ if .Note2}} * {{.Note2}} {{end}}
             {{ if .Declensions}} Decl: {{.Declensions}}{{end}}
-        </idx:short>
     </idx:entry>
+    <hr/>
 {{end}}

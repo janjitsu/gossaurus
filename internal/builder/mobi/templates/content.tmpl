@@ -1,14 +1,16 @@
 {{define "content" -}}
   <?xml version="1.0"?>
   <package version="2.0" xmlns="http://www.idpf.org/2007/opf" unique-identifier="{{.Id}}">
-    <metadata>
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
       <dc:title>{{.Title}}</dc:title>
       <dc:creator opf:role="aut">{{ .Author }}</dc:creator>
       <dc:language>{{.From}}</dc:language>
+      <dc:subject BASICCode="REF008000">Dictionaries</dc:subject>
+      <meta name="DictionaryInLanguage" content="{{.From}}"/>
+      <meta name="DictionaryOutLanguage" content="{{.To}}"/>
       <x-metadata>
         <DictionaryInLanguage>{{.From}}</DictionaryInLanguage>
         <DictionaryOutLanguage>{{.To}}</DictionaryOutLanguage>
-        <DefaultLookupIndex>Croatian</DefaultLookupIndex>
       </x-metadata>
     </metadata>
     <manifest>
