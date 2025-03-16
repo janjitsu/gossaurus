@@ -46,7 +46,9 @@ make build
    You can use calibre for that, for example.
 
 Command below will fix the language metadata of your kindle book (if it's not locked)
-`ebook-convert neuromancer.mobi neuromancer-serbian.mobi --language sr`
+```
+ebook-convert neuromancer.mobi neuromancer-serbian.mobi --language sr
+```
 
 Even if you set "sr" for serbian, it will set the language to "hr" (croatian).
 Some languages are tricky (why?)
