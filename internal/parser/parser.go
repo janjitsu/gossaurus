@@ -46,18 +46,23 @@ func parseEntries(filename string) []entities.Entry {
 		var entry entities.Entry
 		entry.Title = record[0]
 		//@TODO if there are no inflexsions, still is setting an empty string
+		//@TODO empty fields have a dash ( //-) for better readability of the file, filter out this
 		entry.Inflexions = strings.Split(record[1], ",")
-		entry.Grammar = record[2]
+		entry.Grammar1 = record[2]
 		entry.Meaning1 = record[3]
-		entry.Meaning2 = record[4]
-		entry.Meaning3 = record[5]
-		entry.Meaning4 = record[6]
-		entry.Example1 = record[7]
-		entry.Example2 = record[8]
-		entry.Example3 = record[9]
-		entry.Note1 = record[10]
-		entry.Note2 = record[11]
-		entry.Declensions = record[12]
+		entry.Example1 = record[4]
+		entry.Grammar2 = record[5]
+		entry.Meaning2 = record[6]
+		entry.Example2 = record[7]
+		entry.Grammar3 = record[8]
+		entry.Meaning3 = record[9]
+		entry.Grammar4 = record[10]
+		entry.Meaning4 = record[11]
+		entry.Example4 = record[12]
+		entry.Note1 = record[13]
+		entry.Note2 = record[14]
+		entry.Note3 = record[15]
+		entry.Note4 = record[16]
 
 		entries = append(entries, entry)
 	}
