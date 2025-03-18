@@ -2,32 +2,16 @@
     <idx:entry scriptable="yes">
             <idx:orth value="{{.Title}}">{{- if .Inflexions }}<idx:infl>{{- range .Inflexions}}<idx:iform value="{{.}}" exact="yes"/>{{- end}}</idx:infl>{{- end}}</idx:orth>
             <b>{{.Title}}</b>
-            {{if .Grammar}}
-                <idx:gramgrp>
-                    <i>{{.Grammar}}</i>&nbsp;
-                </idx:gramgrp>
-            {{end }}
-            <ol>
-                {{if .Meaning1}}
-                    <li>{{.Meaning1}}
-                        {{ if .Example1}} Ex. {{.Example1}}{{end}}
-                    </li>
-                {{end}}
-                {{if .Meaning2}}
-                    <li>{{.Meaning2}}
-                        {{ if .Example2}} Ex. {{.Example2}}{{end}}
-                    </li>
-                {{end}}
-                {{if .Meaning3}}
-                    <li>{{.Meaning3}}
-                        {{ if .Example3}} Ex. {{.Example3}}{{end}}
-                    </li>
-                {{end}}
-                {{ if .Meaning4}}<li>{{.Meaning4}}</li>{{end}}
-            </ol>
-            {{ if .Note1}} * {{.Note1}} {{end}}
-            {{ if .Note2}} * {{.Note2}} {{end}}
-            {{ if .Declensions}} Decl: {{.Declensions}}{{end}}
+            <p>
+                {{if .Meaning1}} 1. {{if .Grammar1}} <i>{{.Grammar1}}</i>&nbsp; {{end }} {{.Meaning1}} {{ if .Example1}} Ex. {{.Example1}}{{end}} {{end}}
+                {{if .Meaning2}} 2. {{if .Grammar2}} <i>{{.Grammar2}}</i>&nbsp; {{end }} {{.Meaning2}} {{ if .Example2}} Ex. {{.Example2}}{{end}} {{end}}
+                {{if .Meaning3}} 3. {{if .Grammar3}} <i>{{.Grammar3}}</i>&nbsp; {{end }} {{.Meaning3}} {{ if .Example3}} Ex. {{.Example3}}{{end}} {{end}}
+                {{if .Meaning4}} 4. {{if .Grammar4}} <i>{{.Grammar4}}</i>&nbsp; {{end }} {{.Meaning4}} {{ if .Example4}} Ex. {{.Example4}}{{end}} {{end}}
+                {{ if .Note1}} * {{.Note1}} {{end}}
+                {{ if .Note2}} * {{.Note2}} {{end}}
+                {{ if .Note3}} * {{.Note3}} {{end}}
+                {{ if .Note4}} * {{.Note4}} {{end}}
+            </p>
     </idx:entry>
     <hr/>
 {{end}}
