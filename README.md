@@ -14,7 +14,7 @@
     --cover="cover.png" \
     --entries=definitions.tsv
 ```
-### --from and --to
+### --from=hr and --to=en
 * Language codes are described as [ISO 639-1 Codes](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes)
 * Some languages might use alternative codes to default to similar, more popular languages, and they are listed below
 <details>
@@ -24,8 +24,9 @@
 | Serbo-Croation | hr |
 </details>
 
-### --entries=definitions.tsv
+### --entries=definitions.tsv | --entries=definitions.json
 * see [example.tsv](docs/example.tsv)
+* see [example.json](docs/example.json)
 
 ---
 
@@ -45,7 +46,7 @@ make build
    Some language codes are not correctly defined, and you might have to adjust to the correct code in your book.
    You can use calibre for that, for example.
 
-Command below will fix the language metadata of your kindle book (if it's not locked)
+Command below will fix the language metadata of your kindle book (if it's not DRM-locked)
 ```
 ebook-convert neuromancer.mobi neuromancer-serbian.mobi --language sr
 ```
