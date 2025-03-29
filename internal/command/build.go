@@ -1,17 +1,15 @@
 package command
 
 import (
-	"flag"
 	"fmt"
 	"github.com/janjitsu/gossaurus/internal/parser"
-	"log"
 	"os"
 	"os/exec"
 
 	"github.com/janjitsu/gossaurus/internal/builder/mobi"
 )
 
-type Command struct {
+type BuildCommand struct {
 	From        string
 	To          string
 	EntriesFile string
@@ -20,36 +18,7 @@ type Command struct {
 	Cover       string
 }
 
-func BuildWithArgs() Command {
-	cmd := Command{}
-	flag.StringVar(&cmd.From, "from", "",
-		"ISO two letter code of Origin Language. Ex. en")
-	flag.StringVar(&cmd.To, "to", "",
-		"ISO two letter code of Target Language. Ex. es ")
-	flag.StringVar(&cmd.EntriesFile, "entries", "",
-		"tsv file containing entries")
-
-	// optional fields
-	flag.StringVar(&cmd.Title, "title", "Converted Ebook",
-		"Title of the Dictionary")
-	flag.StringVar(&cmd.Author, "author", "jan.art.br", "Name of author")
-	flag.StringVar(&cmd.Cover, "cover", "default-cover.jpg", "image for cover")
-	flag.Parse()
-
-	fmt.Println("Command", cmd)
-
-	if cmd.From == "" {
-		log.Fatalf("flag -from is required, received: %v", cmd.From)
-	}
-
-	if cmd.To == "" {
-		log.Fatalf("flag -to is required, received: %v", cmd.To)
-	}
-
-	return cmd
-}
-
-func (c *Command) Execute() {
+func (c *BuildCommand) Execute() {
 	dictionary := parser.ParseDictionary(parser.CreateDictionaryParams{
 		c.From,
 		c.To,
